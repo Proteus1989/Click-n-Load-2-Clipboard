@@ -1,9 +1,10 @@
 # Click-n-Load-2-Clipboard
-Decrypts Click'n Load links and copy them to the clipboard
+Decrypts Click'n Load links and copy them to the clipboard.
 
 ## Getting Started
 
-ClickAndLoadAPI has not got operative system dependencies, but created GUI is working only for Microsoft Windows systems.
+To run GUI client just execute **CnL2C-1.0.jar** file.
+GUI client works only for Microsoft Windows systems but *ClickAndLoadAPI* class has not got any operative system dependencies.
 
 ### Prerequisites
 
