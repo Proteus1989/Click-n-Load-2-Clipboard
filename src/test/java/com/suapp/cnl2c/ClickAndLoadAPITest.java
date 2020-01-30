@@ -95,7 +95,7 @@ public class ClickAndLoadAPITest
     }
 
     @Test
-    public void testStart() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    public void testStart() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException, InterruptedException
     {
         assertFalse(isPortAlreadyBinded());
 
@@ -104,6 +104,7 @@ public class ClickAndLoadAPITest
         assertTrue(isPortAlreadyBinded());
 
         ClickAndLoadAPI.getInstance().stopService();
+        Thread.sleep(500); // Waits a bit to ensure the port is closed 
     }
 
     @Test
