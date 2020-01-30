@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/Proteus1989/Click-n-Load-2-Clipboard.svg?branch=master)](https://travis-ci.com/Proteus1989/Click-n-Load-2-Clipboard)
+[![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/Proteus1989/Click-n-Load-2-Clipboard.svg?maxAge=2592000)](https://codecov.io/github/dwyl/hapi-auth-jwt2?branch=master)
+
 # Click'n Load 2 Clipboard
 Decrypts Click'n Load links and copy them to the clipboard.
 
@@ -8,7 +11,7 @@ GUI client works only for Microsoft Windows systems but *ClickAndLoadAPI* class 
 
 ### Prerequisites
 
-At least, JRE 1.8 is needed.
+At least, Oracle JRE 1.8 is needed.
 
 ### Download
 
