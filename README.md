@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/Proteus1989/Click-n-Load-2-Clipboard.svg?branch=master)](https://travis-ci.com/Proteus1989/Click-n-Load-2-Clipboard)
-[![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/Proteus1989/Click-n-Load-2-Clipboard.svg?maxAge=2592000)](https://codecov.io/github/Proteus1989/Click-n-Load-2-Clipboard?branch=master)
+[![codecov](https://codecov.io/gh/Proteus1989/Click-n-Load-2-Clipboard/branch/master/graph/badge.svg)](https://codecov.io/gh/Proteus1989/Click-n-Load-2-Clipboard)
+
 
 # Click'n Load 2 Clipboard
 Decrypts Click'n Load links and copy them to the clipboard.
