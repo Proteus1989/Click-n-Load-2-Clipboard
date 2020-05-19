@@ -1,6 +1,5 @@
 package com.suapp.cnl2c.cnl.httphandler;
 
-import com.suapp.cnl2c.cnl.AESDecrypter;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
@@ -12,17 +11,18 @@ import java.util.function.Consumer;
  *
  * @author Antonio
  */
-public class DecrypterHandler extends AbstractHandler
+public class PlainTextHandler extends AbstractHandler
 {
+
     /**
      * Creates an instance of the class. Listener list can be modified
      * externally.
      *
      * @param linkListeners A listener list to be called when a link is
-     * decrypted
+     * captured
      * @throws IllegalArgumentException Listener list cannot be null.
      */
-    public DecrypterHandler(ConcurrentLinkedDeque<Consumer<String>> linkListeners)
+    public PlainTextHandler(ConcurrentLinkedDeque<Consumer<String>> linkListeners)
     {
         super(linkListeners);
     }
@@ -44,19 +44,11 @@ public class DecrypterHandler extends AbstractHandler
         {
             Map<String, String> requestParamValue = handlePostRequest(httpExchange);
             
-            // jk parameter is a processable js function which, after process it, return the key. But mostly key is not obfucated. Therefore, it can be extracted using a regular expression.
-            String jk = requestParamValue.get("jk");
-            if (jk == null)
-                throw new IllegalArgumentException("jk parameter is missing");
-            jk = jk.replaceAll(".+?'(.*?)'.+", "$1");
+            String urls = requestParamValue.get("urls");
+            if (urls == null)
+                throw new IllegalArgumentException("urls parameter is missing");
             
-            String crypted = requestParamValue.get("crypted");
-            if (crypted == null)
-                throw new IllegalArgumentException("crypted parameter is missing");
-
-            String decryped = AESDecrypter.decrypt(crypted, jk);
-
-            linkListeners.forEach(c -> c.accept(decryped));
+            linkListeners.forEach(c -> c.accept(urls));
         }
     }
 

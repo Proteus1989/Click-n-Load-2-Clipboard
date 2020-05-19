@@ -6,7 +6,9 @@
 package com.suapp.cnl2c.httphandler;
 
 import com.suapp.cnl2c.cnl.ClickAndLoadAPI;
+import com.suapp.cnl2c.cnl.httphandler.AbstractHandler;
 import com.suapp.cnl2c.cnl.httphandler.DecrypterHandler;
+import com.suapp.cnl2c.cnl.httphandler.PlainTextHandler;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -46,6 +48,7 @@ public class DecrypterHandlerTest
     public void testClass() throws UnsupportedEncodingException, IOException, NoSuchMethodException
     {
         assertTrue(Modifier.isPublic(DecrypterHandler.class.getDeclaredConstructor(ConcurrentLinkedDeque.class).getModifiers()));
+        assertEquals(PlainTextHandler.class.getSuperclass(), AbstractHandler.class);
     }
 
     @Test
@@ -131,7 +134,7 @@ public class DecrypterHandlerTest
 
         handler = new DecrypterHandler(listeners);
         handler.handle(mockObject);
-        verify(listener, times(0)).accept(EXPECTED_OUTPUT);
+        verify(listener, times(0)).accept(Mockito.any(String.class));
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.suapp.cnl2c.cnl;
 
 import com.suapp.cnl2c.cnl.httphandler.DecrypterHandler;
 import com.suapp.cnl2c.cnl.httphandler.ClientHandler;
+import com.suapp.cnl2c.cnl.httphandler.PlainTextHandler;
 import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.net.BindException;
@@ -30,12 +31,14 @@ public class ClickAndLoadAPI
     private Consumer<Exception> onError = (e) -> Logger.getLogger(ClickAndLoadAPI.class.getName()).log(Level.SEVERE, e, () -> e.getMessage());
 
     private final DecrypterHandler DECRYPTERHANDLER = new DecrypterHandler(linkListeners);
+    private final PlainTextHandler NONCRYPTEDHANDLER = new PlainTextHandler(linkListeners);
 
     private static ClickAndLoadAPI clickAndLoad = null;
 
     private static final int CLICK_AND_LOAD_PORT = 9666;
     private static final String CLIENT_CONTEXT_PATH = "/jdcheck.js";
     private static final String DECRYPT_CONTEXT_PATH = "/flash/addcrypted2";
+    private static final String NON_CRYPTED_CONTEXT_PATH = "/flash/add";
 
     /*
     Creates the instance in a static context, when class is loaded.
@@ -131,6 +134,7 @@ public class ClickAndLoadAPI
             server = HttpServer.create(new InetSocketAddress(CLICK_AND_LOAD_PORT), 0);
             server.createContext(CLIENT_CONTEXT_PATH, new ClientHandler());
             server.createContext(DECRYPT_CONTEXT_PATH, DECRYPTERHANDLER);
+            server.createContext(NON_CRYPTED_CONTEXT_PATH, NONCRYPTEDHANDLER);
             server.setExecutor(null);
             server.start();
             running = true;
